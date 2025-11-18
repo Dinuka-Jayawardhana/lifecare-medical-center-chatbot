@@ -65,7 +65,6 @@ retriever = create_pdf_retriever()
 
 
 def rag_chat(state: State):
-    try:
         question = state["question"]
 
         rag_chain = (
@@ -77,5 +76,3 @@ def rag_chat(state: State):
 
         answer = rag_chain.invoke(question)
         return {"answer": answer}
-    except ValidationError as e:
-        return {"answer": f"INVALID QUESTION: {e}"}
